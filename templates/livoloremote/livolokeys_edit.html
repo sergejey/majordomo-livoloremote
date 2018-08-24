@@ -1,0 +1,79 @@
+
+<!-- Table 'livolokeys' edit -->
+<form action="?" method="post" enctype="multipart/form-data" name="frmEdit" class="form-horizontal">
+[#if OK#]
+<div class="alert alert-success"><#LANG_DATA_SAVED#></div>
+[#endif OK#]
+[#if ERR#]
+<div class="alert alert-danger"><#LANG_FILLOUT_REQURED#></div>
+[#endif ERR#]
+<fieldset>
+[#if ID=""#]
+<legend><#LANG_NEW_RECORD#></legend>
+[#endif ID#]
+<!-- TITLE (varchar) -->
+<div class="form-group[#if ERR_TITLE#] has-error[#endif#]">
+ <label for="title" class="col-lg-3 control-label">
+ <#LANG_TITLE#>:
+ (*)
+ </label>
+ <div class="col-lg-9"><input id="title" name="title" value="[#TITLE#]" type="text" class="form-control"></div>
+</div>
+<!-- KEYNUM (varchar) -->
+<div class="form-group[#if ERR_KEYNUM#] has-error[#endif#]">
+ <label for="keynum" class="col-lg-3 control-label">
+ Key number:
+ </label>
+ <div class="col-lg-9">
+  <select name="keynum" id="keynum" class="form-control">
+   <option value="1"[#if KEYNUM="1"#] selected[#endif#]>1</option>
+   <option value="2"[#if KEYNUM="2"#] selected[#endif#]>2</option>
+   <option value="3"[#if KEYNUM="3"#] selected[#endif#]>3</option>
+   <option value="4"[#if KEYNUM="4"#] selected[#endif#]>4</option>
+   <option value="5"[#if KEYNUM="5"#] selected[#endif#]>5</option>
+   <option value="6"[#if KEYNUM="6"#] selected[#endif#]>6</option>
+   <option value="7"[#if KEYNUM="7"#] selected[#endif#]>7</option>
+   <option value="8"[#if KEYNUM="8"#] selected[#endif#]>8</option>
+   <option value="9"[#if KEYNUM="9"#] selected[#endif#]>9</option>
+   <option value="10"[#if KEYNUM="10"#] selected[#endif#]>10</option>
+  </select>
+ </div>
+</div>
+<!-- REMOTEID (varchar) -->
+<div class="form-group[#if ERR_REMOTEID#] has-error[#endif#]">
+ <label for="remoteid" class="col-lg-3 control-label">
+ Remote ID:
+ </label>
+ <div class="col-lg-9"><input id="remoteid" name="remoteid" value="[#REMOTEID#]" type="text" class="form-control"></div>
+</div>
+<!-- LINKED_OBJECT (varchar) -->
+<div class="form-group[#if ERR_LINKED_OBJECT#] has-error[#endif#]">
+ <label for="linked_object" class="col-lg-3 control-label">
+ <#LANG_LINKED_OBJECT#>:
+ </label>
+ <div class="col-lg-9"><input id="linked_object" name="linked_object" value="[#LINKED_OBJECT#]" type="text" class="form-control"></div>
+</div>
+<!-- LINKED_PROPERTY (varchar) -->
+<div class="form-group[#if ERR_LINKED_PROPERTY#] has-error[#endif#]">
+ <label for="linked_property" class="col-lg-3 control-label">
+ <#LANG_LINKED_PROPERTY#>:
+ </label>
+ <div class="col-lg-9"><input id="linked_property" name="linked_property" value="[#LINKED_PROPERTY#]" type="text" class="form-control"></div>
+</div>
+[#module name="linkedobject" object_field="linked_object" property_field="linked_property" method_field="linked_method"#]
+<div class="form-group">
+        <div class="col-lg-offset-3 col-lg-4">
+ [#if ID!=""#]
+ <button type="submit" name="subm" value="Submit" class="btn btn-primary"><#LANG_SUBMIT#></button>
+ [#else ID#]
+ <button type="submit" name="subm" value="Add" class="btn btn-primary"><#LANG_ADD#></button>
+ [#endif ID#]
+ <a href="?" class="btn btn-default "><#LANG_CANCEL#></a>
+<input type="hidden" name="id" value="<#ID#>">
+<input type="hidden" name="view_mode" value="<#VIEW_MODE#>">
+<input type="hidden" name="edit_mode" value="<#EDIT_MODE#>">
+<input type="hidden" name="mode" value="update">
+        </div>
+</div>
+</fieldset>
+</form>

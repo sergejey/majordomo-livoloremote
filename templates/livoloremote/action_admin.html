@@ -1,0 +1,45 @@
+[#if OK_MSG#]
+<div class="alert alert-success">
+ [#OK_MSG#]
+</div>
+[#endif OK_MSG#]
+
+<!-- table zwave_devices search -->
+<div>
+ [ <a href="#" onClick="$('#api_settings').toggle();return false;"><#LANG_SETUP#></a> ]
+</div>
+<div style="display:none" id='api_settings'>
+&nbsp;
+<form action="?" method="post" enctype="multipart/form-data" name="frmEdit" class="form-horizontal">
+<fieldset>
+<div class="form-group">
+ <label class="control-label"[#if ERR_API_URL#] style="color:red;font-weight:bold"[#endif#]>
+ Gateway IP:
+ (*)
+ </label>
+ <div class="controls"><input type="text" name="api_url" value="[#API_URL#]" class="input"></div>
+</div>
+<div class="form-actions">
+<button type="submit" name="subm" value="Submit" class="btn btn-primary"><#LANG_UPDATE#></button>
+<input type="hidden" name="view_mode" value="update_settings">
+<input type="hidden" name="mode" value="update">
+</div>
+</fieldset>
+</form>
+</div>
+ <!-- action usual -->
+ <!-- table livolokeys search -->
+ [#if VIEW_MODE="search_livolokeys" || VIEW_MODE=""#]
+  [#inc livolokeys_search_admin.html#]
+ [#endif VIEW_MODE#]
+ <!-- / table livolokeys search -->
+ <!-- table livolokeys edit -->
+ [#if VIEW_MODE="edit_livolokeys"#]
+   [#inc livolokeys_edit.html#]
+ [#endif VIEW_MODE#]
+ <!-- / table livolokeys edit -->
+ <!-- table livolokeys view --> 
+ [#if VIEW_MODE="view_livolokeys"#]
+   [#inc livolokeys_view.html#]
+ [#endif VIEW_MODE#]
+ <!-- / table livolokeys view -->
